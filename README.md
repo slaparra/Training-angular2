@@ -4,7 +4,7 @@ With [Typescript](http://www.typescriptlang.org/docs/tutorial.html)
 
 ##Install
 
-1. Install [Node.js](https://nodejs.org/en/download/)
+1) Install [Node.js](https://nodejs.org/en/download/)
 
 (or with [homebrew](http://brew.sh/))
 
@@ -12,7 +12,7 @@ With [Typescript](http://www.typescriptlang.org/docs/tutorial.html)
 brew install node
 ```
 
-2. Add the configuration files ([+info](https://angular.io/docs/ts/latest/quickstart.html#!#create-and-configure))
+2) Add the configuration files ([+info](https://angular.io/docs/ts/latest/quickstart.html#!#create-and-configure))
 
 ```
 package.json
@@ -20,7 +20,7 @@ tsconfig.json
 typings.json
 ```
 
-3. Run npm install
+3) Run npm install
 
 ```
 npm install

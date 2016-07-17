@@ -1,29 +1,53 @@
-<html>
-<head>
-    <title>Atrapalo Github profiles - Events Team</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Atrapalo Github profiles - Events Team</title>
 
-    <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Angular 2 Training">
+        <meta name="author" content="Santiago Laparra">
 
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-        System.import('app').catch(function(err){ console.error(err); });
-    </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-</head>
+        <!-- 1. Load libraries -->
+        <!-- Polyfill(s) for older browsers -->
+        <script src="node_modules/core-js/client/shim.min.js"></script>
+        <script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
 
-<!-- 3. Display the application -->
-<body>
-<my-app>Loading...</my-app>
-</body>
+        <!-- 2. Configure SystemJS -->
+        <script src="systemjs.config.js"></script>
+        <script>
+            System.import('app').catch(function(err){ console.error(err); });
+        </script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+    </head>
+
+    <body>
+
+        <my-app>Loading...</my-app>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"><a href="https://github.com/slaparra/Training-angular2">GitHub</a> | <a href="https://es.linkedin.com/in/santiago-laparra-muñoz-11152128">LinkedIn</a></p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+        <script>window.jQuery || document.write('<script src="assets/js/jquery-2.2.0.min.js"><\/script>')</script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
 </html>
