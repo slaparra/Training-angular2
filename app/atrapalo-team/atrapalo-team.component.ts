@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    templateUrl: '/app/view/atrapalo-team.html'
+    templateUrl: '/app/atrapalo-team/atrapalo-team.html'
 })
 
 export class AtrapaloTeamComponent implements OnInit {

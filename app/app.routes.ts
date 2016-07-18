@@ -1,6 +1,6 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { AtrapaloTeamComponent } from './component/atrapalo-team.component';
-import { MemberProfileComponent } from './component/user-profile.component';
+import { AtrapaloTeamComponent } from './atrapalo-team/atrapalo-team.component';
+import { MemberProfileComponent } from './user/user-profile.component';
 
 const routes: RouterConfig = [
     { path: '', component: AtrapaloTeamComponent },
