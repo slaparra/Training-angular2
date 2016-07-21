@@ -5,17 +5,20 @@ export class Commit {
     private message: string;
     private createDate: Date;
     private repository: Repository;
+    private authorName: string;
 
     constructor(
         id: string,
         message: string,
         createDate: Date,
-        repository: Repository
+        repository: Repository,
+        authorName: string
     ) {
         this.sha = id;
         this.message = message;
         this.createDate = createDate;
         this.repository = repository;
+        this.authorName = authorName;
     }
 
     public getSha(): string {
@@ -32,5 +35,9 @@ export class Commit {
 
     public getRepository(): Repository {
         return this.repository;
+    }
+
+    public getAuthorName(): string {
+        return this.authorName;
     }
 }

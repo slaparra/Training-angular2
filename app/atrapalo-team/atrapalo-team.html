@@ -2,6 +2,6 @@
     <div *ngFor="let user of users" class="col-lg-4">
         <img height="140" width="140" alt="Generic placeholder image" src="{{ user.getImageUrl() }}" class="img-circle">
         <h2>{{ user.getId() }}</h2>
-        <p><a role="button" [routerLink]="['/user-profile', user.getId()]" class="btn btn-default">User profile »</a></p>
+        <p><a role="button" [routerLink]="['/user-profile', user.getId()]" class="btn btn-danger">User profile »</a></p>
     </div>
 </div>

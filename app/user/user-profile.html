@@ -1,1 +1,52 @@
-member profile
+<div class="row">
+    <div class="col-lg-5">
+        <div class="media">
+            <a class="pull-left" href="{{ user.getGithubUserUrl()}}">
+                <img class="media-object dp img-circle" src="{{ user.getImageUrl()}}" style="width: 100px;height:100px;">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    {{ user.getName()}}
+                    <button type="button" class="btn btn-default btn-xs" (click)="showCommitsTable()" *ngIf="commits.length > 0" [disabled]="!tableHidden">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        commits
+                    </button>
+                </h4>
+                <span class="text-muted">{{ user.getCompany()}}</span><br />
+                <a href="{{ user.getGithubUserUrl()}}">{{ user.getGithubUserUrl()}}</a>
+                <hr style="margin:8px auto">
+
+                <span class="label label-success">Public repositories: {{ user.getPublicRepos()}}</span>
+                <span class="label label-default">Following: {{ user.getFollowing() }}</span>
+                <span class="label label-default">Followers: {{ user.getFollowers() }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" [hidden]="tableHidden && commits.length > 0">
+    <h3>
+        Public commits
+    </h3>
+</div>
+
+<table class="table table-hover" [hidden]="tableHidden && commits.length > 0">
+    <thead *ngIf="commits.length > 0">
+        <th>Message</th>
+        <th>User</th>
+        <th>Repo</th>
+        <th>Date</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let commit of commits">
+            <td>{{ commit.getMessage() }}</td>
+            <td>{{ commit.getAuthorName() }}</td>
+            <td>{{ commit.repository.getName() }}</td>
+            <td>{{ commit.getCreateDate().toDateString() }}</td>
+        </tr>
+        <tr *ngIf="commits.length === 0">
+            <td colspan="3">Any commit to show</td>
+        </tr>
+    </tbody>
+</table>

@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetUserService } from './get-user.service';
 import {User} from "./user.model";
+import {Commit} from "../user-activity/commit.model";
 
 @Component({
     templateUrl: '/app/user/user-profile.html',
@@ -9,9 +10,11 @@ import {User} from "./user.model";
 })
 export class UserProfileComponent implements OnInit {
 
-    private user: User;
+    private user: User = new User('','/assets/image/profile.png');
+    private commits: Array<Commit> = [];
     private sub: any;
     private userCreated: EventEmitter<User>;
+    private tableHidden: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
@@ -22,8 +25,7 @@ export class UserProfileComponent implements OnInit {
         this.userCreated.subscribe((data) => {
             this.getUserService.getUserEvents(data)
                 .then(commits => {
-                    console.log('component');
-                    console.log(commits);
+                    this.commits = commits;
                 });
         });
     }
@@ -34,9 +36,14 @@ export class UserProfileComponent implements OnInit {
             this.getUserService.getUser(id)
                 .then(user => {
                     this.userCreated.emit(user);
+                    this.user = user;
                 })
                 .catch(error => { console.log('error----:'); console.log(error); });
         });
+    }
+
+    public showCommitsTable() {
+        this.tableHidden = false;
     }
 
 }
