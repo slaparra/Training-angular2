@@ -80,3 +80,26 @@ code {
     -ms-transform:rotate(360deg);
     -webkit-transform:rotate(360deg);
 }
+
+.user-small-circle-list {
+    margin-top: 10px;
+}
+
+.user-header-icon {
+    height:30px;
+    width:30px;
+}
+
+.social-icon {
+    text-decoration: none;
+    cursor: pointer;
+}
+.twitter-icon {
+    height:30px;
+    width:30px;
+}
+
+.github-icon {
+    height:26px;
+    width:26px;
+}
