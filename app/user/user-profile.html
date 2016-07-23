@@ -7,14 +7,13 @@
             <div class="media-body">
                 <h4 class="media-heading">
                     {{ user.getName()}}
-                    <button type="button" class="btn btn-default btn-xs" (click)="showCommitsTable()" *ngIf="commits.length > 0" [disabled]="!tableHidden">
-                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                        commits
-                    </button>
+                    <a href="#" (click)="showCommits($event)" title="Show GitHub commits"><img class="social-icon github-icon" src="/assets/image/github.png" /></a>
+                    <a href="#" (click)="showTweets($event)" title="Show tweets"><img class="social-icon twitter-icon" src="/assets/image/twitter.png" /></a>
+
                 </h4>
-                <span class="text-muted">{{ user.getCompany()}}</span><br />
+                <span class="text-muted" *ngIf="user.getCompany()">{{ user.getCompany() }}<br /></span>
                 <a href="{{ user.getGithubUserUrl()}}">{{ user.getGithubUserUrl()}}</a>
-                <hr style="margin:8px auto">
+                <hr style="margin:8px auto" />
 
                 <span class="label label-success">Public repositories: {{ user.getPublicRepos()}}</span>
                 <span class="label label-default">Following: {{ user.getFollowing() }}</span>
@@ -25,27 +24,29 @@
 </div>
 
 
-<div class="row" [hidden]="tableHidden && commits.length > 0">
+<div class="row" [hidden]="githubHidden">
     <h3>
         Public commits
     </h3>
 </div>
 
-<table class="table table-hover" [hidden]="tableHidden && commits.length > 0">
-    <thead *ngIf="commits.length > 0">
-        <th>Message</th>
-        <th>User</th>
-        <th>Repo</th>
-        <th>Date</th>
+<table class="table table-hover" [hidden]="githubHidden">
+    <thead *ngIf="user.getCommits().length > 0">
+        <tr>
+            <th>Message</th>
+            <th>User</th>
+            <th>Repo</th>
+            <th>Date</th>
+        </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let commit of commits">
+        <tr *ngFor="let commit of user.getCommits()">
             <td>{{ commit.getMessage() }}</td>
             <td>{{ commit.getAuthorName() }}</td>
             <td>{{ commit.repository.getName() }}</td>
             <td>{{ commit.getCreateDate().toDateString() }}</td>
         </tr>
-        <tr *ngIf="commits.length === 0">
+        <tr *ngIf="user.getCommits().length === 0">
             <td colspan="3">Any commit to show</td>
         </tr>
     </tbody>

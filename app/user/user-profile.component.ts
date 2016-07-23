@@ -1,39 +1,39 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GetUserService } from './get-user.service';
+import { GitHubUserService } from './github-user.service';
 import {User} from "./user.model";
-import {Commit} from "../user-activity/commit.model";
+import {UserProvider} from "./user.provider";
+import {CommitProvider} from "../commit/commit.provider";
 
 @Component({
     templateUrl: '/app/user/user-profile.html',
-    providers: [GetUserService]
+    providers: [GitHubUserService]
 })
 export class UserProfileComponent implements OnInit {
 
     private user: User = new User('','/assets/image/profile.png');
-    private commits: Array<Commit> = [];
     private sub: any;
     private userCreated: EventEmitter<User>;
-    private tableHidden: boolean = true;
+    private githubHidden: boolean = true;
+    private twitterHidden: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
-        private getUserService: GetUserService
+        private userProvider: UserProvider,
+        private commitProvider: CommitProvider
     ) {
         this.userCreated  = new EventEmitter<User>();
-
-        this.userCreated.subscribe((data) => {
-            this.getUserService.getUserEvents(data)
-                .then(commits => {
-                    this.commits = commits;
-                });
+        this.userCreated.subscribe((user) => {
+            // console.log('user created: ', user);
         });
     }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
+            this.githubHidden = true;
+            this.twitterHidden = true;
             let id = params['id'];
-            this.getUserService.getUser(id)
+            this.userProvider.getUser(id)
                 .then(user => {
                     this.userCreated.emit(user);
                     this.user = user;
@@ -42,8 +42,17 @@ export class UserProfileComponent implements OnInit {
         });
     }
 
-    public showCommitsTable() {
-        this.tableHidden = false;
+    public showCommits(e) {
+        e.preventDefault();
+        this.commitProvider.getUserCommits(this.user)
+            .then(commits => {
+                this.user.setCommits(commits);
+                this.githubHidden = false;
+            });
     }
 
+    public showTweets(e) {
+        e.preventDefault();
+        this.twitterHidden = false;
+    }
 }

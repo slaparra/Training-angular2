@@ -24,10 +24,16 @@
                     </ul>
                 </li>
             </ul>
+            <div class="user-small-circle-list col-lg-7 pull-right">
+                <div *ngFor="let user of users" class="col-lg-1">
+                    <a [routerLink]="['/user-profile', user.getId()]">
+                        <img title="{{ user.getId() }}" src="{{ user.getImageUrl() }}" class="img-rounded user-header-icon">
+                    </a>
+                </div>
+            </div>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
 
 <div class="container marketing">
     <router-outlet></router-outlet>

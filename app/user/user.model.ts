@@ -1,3 +1,5 @@
+import {Commit} from "../commit/commit.model";
+
 export class User {
     private id: string;
     private imageUrl: string;
@@ -8,10 +10,14 @@ export class User {
     private publicRepos: number;
     private company: string;
     private eventsUrl: string;
+    private commits: Commit[];
+    private userUpdated: boolean;
 
     constructor(id: string, imageUrl: string) {
         this.id = id;
         this.imageUrl = imageUrl;
+        this.commits = [];
+        this.userUpdated = false;
     }
 
     public getId() {
@@ -76,5 +82,21 @@ export class User {
 
     public setPublicRepos(publicRepos:number) {
         this.publicRepos = publicRepos;
+    }
+
+    public getCommits(): Commit[] {
+        return this.commits;
+    }
+
+    public setCommits(commits:Commit[]) {
+        this.commits = commits;
+    }
+
+    public isUserUpdated(): boolean {
+        return this.userUpdated;
+    }
+
+    public setUserUpdated() {
+        this.userUpdated = true;
     }
 }
