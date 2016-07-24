@@ -8,8 +8,6 @@
                 <h4 class="media-heading">
                     {{ user.getName()}}
                     <a href="#" (click)="showCommits($event)" title="Show GitHub commits"><img class="social-icon github-icon" src="/assets/image/github.png" /></a>
-                    <a href="#" (click)="showTweets($event)" title="Show tweets"><img class="social-icon twitter-icon" src="/assets/image/twitter.png" /></a>
-
                 </h4>
                 <span class="text-muted" *ngIf="user.getCompany()">{{ user.getCompany() }}<br /></span>
                 <a href="{{ user.getGithubUserUrl()}}">{{ user.getGithubUserUrl()}}</a>

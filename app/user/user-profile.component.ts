@@ -15,7 +15,6 @@ export class UserProfileComponent implements OnInit {
     private sub: any;
     private userCreated: EventEmitter<User>;
     private githubHidden: boolean = true;
-    private twitterHidden: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
@@ -31,14 +30,13 @@ export class UserProfileComponent implements OnInit {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.githubHidden = true;
-            this.twitterHidden = true;
             let id = params['id'];
             this.userProvider.getUser(id)
                 .then(user => {
                     this.userCreated.emit(user);
                     this.user = user;
                 })
-                .catch(error => { console.log('error----:'); console.log(error); });
+                .catch(error => console.log('error----:', error));
         });
     }
 
@@ -49,10 +47,5 @@ export class UserProfileComponent implements OnInit {
                 this.user.setCommits(commits);
                 this.githubHidden = false;
             });
-    }
-
-    public showTweets(e) {
-        e.preventDefault();
-        this.twitterHidden = false;
     }
 }
