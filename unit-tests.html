@@ -24,7 +24,8 @@
             Promise
                 .all(
                     [
-                        System.import('app/user/user.model.spec')
+                        System.import('app/user/user.model.spec'),
+                        System.import('app/commit/commit.model.spec')
                     ]
                 )
                 .then(window.onload)
