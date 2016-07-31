@@ -24,7 +24,7 @@
                     </ul>
                 </li>
             </ul>
-            <div class="user-small-circle-list col-lg-7 pull-right">
+            <div class="user-small-circle-list col-lg-7 hidden-md hidden-sm pull-right">
                 <div *ngFor="let user of users" class="col-lg-1">
                     <a [routerLink]="['/user-profile', user.getId()]">
                         <img title="{{ user.getId() }}" src="{{ user.getImageUrl() }}" class="img-rounded user-header-icon">

@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
     private sub: any;
     private userCreated: EventEmitter<User>;
     private githubHidden: boolean = true;
+    private loadingImageHidden: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class UserProfileComponent implements OnInit {
         private commitProvider: CommitProvider
     ) {
         this.userCreated  = new EventEmitter<User>();
+        this.loadingImageHidden = true;
         this.userCreated.subscribe((user) => {
             // console.log('user created: ', user);
         });
@@ -31,10 +33,12 @@ export class UserProfileComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.githubHidden = true;
             let id = params['id'];
+            this.loadingImageHidden = false;
             this.userProvider.getUser(id)
                 .then(user => {
                     this.userCreated.emit(user);
                     this.user = user;
+                    this.loadingImageHidden = true;
                 })
                 .catch(error => console.log('error----:', error));
         });

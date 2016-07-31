@@ -103,3 +103,7 @@ code {
     height:26px;
     width:26px;
 }
+
+.loading-icon {
+    padding: 50px;
+}
